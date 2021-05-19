@@ -37,7 +37,7 @@ def add_numbers_post():
 	
 @app.route('/multiply_numbers',method=['GET','POST'])
 def multiply_numbers_post():
-	if request.method='GET':
+	if request.method=='GET':
 		return render_template('multiply_numbers.html')
 	elif request.method == 'POST':
 	      print(request.form['text'].split())
