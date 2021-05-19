@@ -15,8 +15,7 @@ def home_page():
 
 @app.route('/<name>')
 def profile(name):
-	new_name = str(name) + 'You are doing Great'
-	return render_template('index.html', name=new_name)
+	return render_template('index.html', name=name)
 
 
 @app.route('/add_numbers', methods=['GET','POST'])
@@ -35,12 +34,14 @@ def add_numbers_post():
   	      except ValueError:
   	      	return "Easy now! Let's keep it simple! 2 numbers with a space between them please"
 	
-@app.route('/multiply_numbers',method=['GET','POST'])
+@app.route('/multiply_numbers', methods=['GET','POST'])
 def multiply_numbers_post():
-	if request.method=='GET':
-		return render_template('multiply_numbers.html')
-	elif request.method == 'POST':
-	      print(request.form['text'].split())
+	  # --> ['5', '6', '8']
+	  # print(type(request.form['text']))
+	  if request.method == 'GET':
+	  	return render_template('multiply_numbers.html')
+	  elif request.method == 'POST':
+  	      print(request.form['text'].split())
   	      total = 1
   	      try:
   	      	for str_num in request.form['text'].split():
